@@ -8,7 +8,7 @@ RSpec.describe CommentsController, type: :controller do
     sign_in user
     post :create, params: { gram_id: gram.id, comment: { message: "awesome gram"}}
     expect(response).to redirect_to root_path
-    expect(gram.comments.lenght).to eq 1
+    expect(gram.comments.length).to eq 1
     expect(gram.comments.first.message).to eq("awesome gram")
     end
 
@@ -21,7 +21,7 @@ RSpec.describe CommentsController, type: :controller do
     it "should return http status not found if gram isnt found" do
       user = FactoryBot.create(:user)
       sign_in user
-      post :create, params: { gram_id: 'not_a_gram', comment: { message: "awesome gram"}}
+      post :create, params: { gram_id: 'YOLOSWAG', comment: { message: "awesome gram"}}
       expect(response).to have_http_status :not_found
     end
 
